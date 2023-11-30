@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interfaz de Investigación - LakeView</title>
+    <link rel="stylesheet" href="estilazo.css"> 
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Raleway:wght@300&family=Work+Sans:wght@500&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="background-container">
+        <div class="main-container">
+            <div id="buttonsContainer" class="buttons-container">
+                <button id="toggleDisplayButton" class="button toggle-button">Ocultar/Mostrar Información</button>
+                <button id="addNewSubjectButton" class="button add-button">Agregar Nuevo Sujeto</button>
+            </div><br>
+
+            <div id="contentContainer">
+                <div id="subjectListContainer" class="subject-list-container"></div>
+                
+                <div class="subject-details" id="subjectDetails" style="display: none;">
+                    <input type="text" id="nombre" placeholder="Nombre" required><br>
+            <select id="tipo" required>
+                <option value="" disabled selected>Selecciona Tipo</option>
+                <option value="cargado">Cargado</option>
+                <option value="vivo">Vivo</option>
+            </select><br>
+            <input type="text" id="vive" placeholder="Donde vive" required><br>
+            <div id="descargadoContainer" style="display: none;">
+                <input type="date" id="descargadoDesde" placeholder="Descargado desde"><br>
+            </div>
+            <select id="culpabilidad">
+                <option value="" disabled selected>Culpabilidad</option>
+                <option value="posible">Posible cooperador</option>
+                <option value="cooperador">Cooperador</option>
+                <option value="perpetrador">Perpetrador</option>
+            </select><br>
+            <input type="file" id="imageInput" onchange="previewImage(event)"><br>
+            <img id="subjectImage" src="" alt="Imagen del Sujeto" style="width: 100px; height: 100px;"><br>
+            <textarea id="comentarios" placeholder="Comentarios"></textarea><br>
+            <div class="button-group">
+                <button onclick="saveSubject()" class="button">Guardar</button>
+                <button onclick="deleteCurrentSubject()" id="deleteSubjectButton" class="button delete-button" style="display: none;">Eliminar</button>
+            </div>
+        </div>
+    </div>
+    <img id="backgroundImage" src="imgs/lakeview.webp" alt="Fondo" style="display: none; width: 100%; height: auto; position: fixed; top: 0; left: 0; z-index: -1;"> <!-- Imagen de fondo oculta -->
+
+    <script src="scriptazo.js"></script> <!-- Link al archivo JavaScript -->
+</body>
+</html>
