@@ -22,6 +22,9 @@ body {
         position: relative; /* Posicionamiento relativo para el z-index */
         z-index: 1; /* Asegúrate de que el contenido está sobre la imagen de fondo */
         align-items: flex-start; /* Alinea los elementos hijos a la izquierda */
+        display: grid;
+        grid-template-columns: 1fr 1fr; /* Divide el contenedor principal en dos columnas iguales */
+        align-items: start; /* Alinea los elementos al inicio verticalmente */
         
 
 .subject-list-container, .subject-details {
@@ -112,6 +115,46 @@ body {
 .button-group {
     display: flex;
     flex-direction: row;
-    gap: 10px;
+    gap: 0px;
     align-items: center;
+}
+.form-container {
+    display: flex;
+    flex-direction: column;
+    max-width: 300px;
+    margin: 0 auto;
+    background-color: #f9f9f9;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    max-width: 600px; /* Aumenta el ancho máximo del formulario */
+    margin-top: 20px;
+}
+.form-group input[type="text"],
+.form-group input[type="date"],
+.form-group select,
+.form-group textarea {
+    /* ... (otros estilos) ... */
+    padding: 10px; /* Aumenta el padding para hacer los campos más grandes */
+    font-size: 16px; /* Aumenta el tamaño de la fuente */
+}
+
+.form-group {
+    margin-bottom: 5px;
+    height: 90px; 
+}
+#subjectImage {
+    width: 700px; /* Aumenta el ancho de la imagen */
+    height: 800px; /* Aumenta la altura de la imagen */
+    object-fit: cover; /* Asegura que la imagen mantenga sus proporciones */
+    border-radius: 10px; /* Agrega bordes redondeados a la imagen */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Agrega sombra a la imagen */
+}
+
+.button-group .button {
+    padding: 12px 0; /* Aumenta el padding vertical para hacer los botones más grandes */
+    font-size: 16px; /* Aumenta el tamaño de la fuente en los botones */
+}
+.button-group {
+    margin-top: 20px; /* Añade espacio adicional antes del grupo de botones */
 }
