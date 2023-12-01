@@ -50,7 +50,7 @@
                         
                         <div class="form-group">
                             <label for="culpabilidad">Culpabilidad</label>
-                            <select id="culpabilidad">
+                            <select id="culpabilidad" style="margin-bottom: -50px;">
                                 <option value="" disabled selected>Culpabilidad</option>
                                 <option value="posible">Posible cooperador</option>
                                 <option value="cooperador">Cooperador</option>
@@ -62,11 +62,9 @@
                             <label for="imageInput">Imagen del Sujeto</label>
                             <input type="file" id="imageInput" onchange="previewImage(event)">
                         </div>
-                        
                         <div class="form-group">
-                            <img id="subjectImage" src="" alt="Imagen del Sujeto" style="width: 100px; height: 100px;">
-                        </div>
-                        
+                            <img id="subjectImage" src="" alt="Imagen del Sujeto" style="width: 200px; height: 200px;">
+                        </div><br>
                         <div class="form-group">
                             <label for="comentarios">Comentarios</label>
                             <textarea id="comentarios" placeholder="Comentarios"></textarea>
@@ -75,6 +73,8 @@
                         <div class="button-group">
                             <button onclick="saveSubject()" class="button">Guardar</button>
                             <button onclick="deleteCurrentSubject()" id="deleteSubjectButton" class="button delete-button" style="display: none;">Eliminar</button>
+                            <button type="button" onclick="cancelEdit()" class="button">Cancelar</button>
+
                         </div>
                     </form>
                 </div>
