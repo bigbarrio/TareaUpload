@@ -30,26 +30,30 @@ function toggleDisplay() {
     const details = document.getElementById('subjectDetails');
     const list = document.getElementById('subjectListContainer');
     const toggleButton = document.getElementById('toggleDisplayButton');
-    const addNewSubjectButton = document.getElementById('addNewSubjectButton'); // Botón para agregar nuevo sujeto
-    const backgroundImage = document.getElementById('backgroundImage'); // Asegúrate de tener este ID en tu imagen de fondo
+    const addNewSubjectButton = document.getElementById('addNewSubjectButton');
+    const backgroundImage = document.getElementById('backgroundImage');
 
     if (isListVisible || details.style.display === 'block') {
-        // Si la lista o el formulario están visibles, ocultarlos y mostrar el fondo
+        // Guardar el último estado visible antes de ocultar
+        lastVisibleState = details.style.display === 'block' ? 'details' : 'list';
+
         details.style.display = 'none';
         list.style.display = 'none';
-        addNewSubjectButton.style.display = 'none'; // Oculta el botón de agregar nuevo sujeto
-        backgroundImage.style.display = 'block'; // Muestra la imagen de fondo
+        addNewSubjectButton.style.display = 'none';
+        backgroundImage.style.display = 'block';
         toggleButton.textContent = 'Mostrar Información';
         isListVisible = false;
     } else {
-        // Si ambos están ocultos, mostrar según el último estado visible
-        backgroundImage.style.display = 'none'; // Oculta la imagen de fondo
-        addNewSubjectButton.style.display = 'block'; // Muestra el botón de agregar nuevo sujeto
+        // Mostrar según el último estado guardado
+        backgroundImage.style.display = 'none';
+        addNewSubjectButton.style.display = 'block';
+        
         if (lastVisibleState === 'details') {
             details.style.display = 'block';
         } else {
             list.style.display = 'block';
         }
+        
         toggleButton.textContent = 'Ocultar Información';
         isListVisible = true;
     }
@@ -115,7 +119,7 @@ function editSubject(subject,index) {
     currentEditingIndex = index; // Guarda el índice del sujeto que se está editando
     document.getElementById('nombre').value = subject.nombre;
     document.getElementById('tipo').value = subject.tipo;
-    document.getElementById('vive').value = subject.vive;
+    document.getElementById('vive').value = subject.dondeVive;
     document.getElementById('descargadoDesde').value = subject.descargadoDesde || '';
     document.getElementById('culpabilidad').value = subject.culpabilidad;
     document.getElementById('subjectImage').src = subject.urlImagen || 'imgs/luke.webp';
@@ -123,6 +127,7 @@ function editSubject(subject,index) {
     document.getElementById('subjectDetails').style.display = 'block';
     document.getElementById('subjectListContainer').style.display = 'none';
     document.getElementById('deleteSubjectButton').style.display = 'block'; // Muestra el botón de eliminar
+    document.getElementById('cancelButton').style.display = 'block';
     lastVisibleState = 'details'; // Actualiza el estado al editar un sujeto
 }
 function deleteCurrentSubject() {
@@ -194,6 +199,14 @@ function saveSubject() {
     isListVisible = true;
     lastVisibleState = 'list';
 }
+//funcion cancelar editado
+function cancelEdit() {
+    document.getElementById('subjectDetails').style.display = 'none';
+    document.getElementById('subjectListContainer').style.display = 'block';
+    isListVisible = true;
+    lastVisibleState = 'list';
+}
+
 
 
 // Función para abrir el formulario con campos vacíos para un nuevo sujeto
@@ -214,6 +227,7 @@ function openNewSubjectForm() {
     document.getElementById('subjectListContainer').style.display = 'none';
     currentEditingIndex = null; // No hay sujeto siendo editado
     document.getElementById('deleteSubjectButton').style.display = 'none'; // Oculta el botón de eliminar
+    document.getElementById('cancelButton').style.display = 'block';
     currentEditingIndex = null; // No hay sujeto siendo editado
     isListVisible = false;
     lastVisibleState = 'details';
